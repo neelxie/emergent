@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="STI -- Data Solutions Platform" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script>
+      // Open modal
+      document.getElementById("myModal").style.display = "block";
+
+      // Close modal
+      document.getElementById("myModal").style.display = "none";
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(".open-modal").on("click", function () {
+          const target = $(this).data("target");
+          $(".modal").modal("hide");
+          $(target).modal("show");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#close-modal-btn").on("click", function () {
+          $("#myModal").modal("hide");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#xlose-modal-btn").on("click", function () {
+          $("#userModal").modal("hide");
+        });
+      });
+    </script>
+
+    <style>
+      .TextButton {
+        display: block;
+        cursor: pointer;
+        user-select: none;
+        line-height: 0;
+        word-wrap: break-word;
+        padding: 20px 30px;
+        text-decoration: none;
+        color: black;
+        margin: initial;
+        border-radius: 2px;
+        transition: 0.3s ease-in-out;
+        background: transparent;
+        font-weight: 700;
+      }
+      .form-signin {
+        background-color: #ffecbb;
+        /* padding: 4rem 4rem 0 4rem;
+        min-height: 100vh; */
+      }
+      .form-signin {
+        max-width: 530px;
+        padding: 25px;
+      }
+
+      .form-signin .form-floating:focus-within {
+        z-index: 2;
+      }
+
+      .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      .login-form {
+        /* width: 70%; */
+        padding: 2rem;
+        background-color: #20c997;
+        border-radius: 15px;
+      }
+      .form-footer {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+      }
+      .arrow-dir:hover,
+      .link-footer:hover,
+      .reset-link a {
+        color: white;
+        cursor: pointer;
+      }
+      .link-footer {
+        text-decoration: none;
+        color: #343a40;
+      }
+      .reset-link {
+        text-align: right;
+      }
+      .reset-link a {
+        color: red;
+        text-decoration: none;
+      }
+      body {
+        background: #ffecbb;
+      }
+      .colot {
+        background-color: #20c997;
+      }
+      .rounded-circle {
+        border: 1px solid #ffecbb;
+      }
+      .modal-content {
+        top: 7rem;
+      }
+      .card {
+        height: 13rem;
+      }
+      .card:hover {
+        border: 1px solid #e31c3a;
+      }
+      .card-body {
+        text-decoration: none;
+      }
+      .card-body:hover {
+        cursor: pointer;
+      }
+
+      .gridy{
+        display: grid;
+        gap: .3rem;
+      }
+
+      .flexi{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      .card-footer {
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .projectList {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 2rem;
+      }
+      .flexy{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="w-100 m-auto">
+      <header class="p-3 mb-3 border-bottom colot">
+        <div class="container">
+          <div
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+          >
+            <a
+              href="/"
+              class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+            >
+              <img
+                class=""
+                src="./img/logo.png"
+                alt=""
+                width="120"
+                height="40"
+              />
+            </a>
+
+            <ul
+              class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+            ></ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+            </form>
+
+            <div class="dropdown text-end">
+              <a
+                href="#"
+                class="d-block link-dark text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://avatars.githubusercontent.com/u/60213381?s=200&v=4"
+                  alt="mdo"
+                  width="32"
+                  height="32"
+                  class="rounded-circle"
+                />
+              </a>
+              <ul class="dropdown-menu text-small" style="">
+                <li>
+                  <div class="open-modal dropdown-item" data-target="#myModal">
+                    Create project
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="profile.html">Profile</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="p-5">
+        <div class="col-md-4">
+          <div class="p-3 py-5 textrit">
+            <a type="button" href="projects.html" class="btn btn-outline-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                ></path>
+              </svg>
+              Projects
+            </a>
+          </div>
+        </div>
+
+        <div>Project Details</div>
+        <hr class="hr" />
+        <div class="col-md-11 mb-5">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h6 class="text-success">Project Name</h6>
+            <p>Ecure</p>
+            <h6 class="text-success">Project ID</h6>
+            <p>bbff2fc0-baee-45a4-89e9-59c9f5802dcd</p>
+          </div>
+        </div>
+        <div>Members</div>
+        <hr class="hr" />
+        <div class="col-md-11 mb-5">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <div class="flexy">
+              <div>
+                <h6 class="text-success">Project has 1 Team Member</h6>
+                <p>
+                  Members that have accounts on can perform different operations
+                  on the project as allocated by Project Owner.
+                </p>
+              </div>
+              <button type="button" class="btn btn-outline-primary">
+                Invite Member
+              </button>
+            </div>
+            <div class="flexy">
+              <div class="flexi">
+                <img
+                  src="https://avatars.githubusercontent.com/u/60213381?s=200&v=4"
+                  alt="mdo"
+                  width="42"
+                  height="42"
+                  class="rounded-circle"
+                />
+                <div class="gridy">
+                  <div class="text-success">Neelxie</div>
+                  <div>derrick@gmail.com</div>
+                </div>
+              </div>
+              <div><strong class="text-success">Role:</strong> Owner</div>
+            </div>
+          </div>
+        </div>
+        <div>Danger</div>
+        <hr class="hr" />
+        <div class="col-md-11 mb-5">
+          <div class="h-100 p-5 bg-light border rounded-3 flexy">
+            <div>
+              <h6 class="text-success">Delete project</h6>
+              <p>Delete your entire project, delete all images and resources attached to it.</p>
+            </div>
+            <div>
+              <button type="button" class="btn btn-danger">
+                Delete Project
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <p class="mb-3 text-muted">© Emergent.ai 2023</p>
+    </main>
+  </body>
+</html>

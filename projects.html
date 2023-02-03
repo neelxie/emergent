@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="STI -- Data Solutions Platform" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script>
+      // Open modal
+      document.getElementById("myModal").style.display = "block";
+
+      // Close modal
+      document.getElementById("myModal").style.display = "none";
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(".open-modal").on("click", function () {
+          const target = $(this).data("target");
+          $(".modal").modal("hide");
+          $(target).modal("show");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#close-modal-btn").on("click", function () {
+          $("#myModal").modal("hide");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#xlose-modal-btn").on("click", function () {
+          $("#userModal").modal("hide");
+        });
+      });
+    </script>
+    <style>
+      .TextButton {
+        display: block;
+        cursor: pointer;
+        user-select: none;
+        line-height: 0;
+        word-wrap: break-word;
+        padding: 20px 30px;
+        text-decoration: none;
+        color: black;
+        margin: initial;
+        border-radius: 2px;
+        transition: 0.3s ease-in-out;
+        background: transparent;
+        font-weight: 700;
+      }
+      .form-signin {
+        background-color: #ffecbb;
+        /* padding: 4rem 4rem 0 4rem;
+        min-height: 100vh; */
+      }
+      .form-signin {
+        max-width: 530px;
+        padding: 25px;
+      }
+
+      .form-signin .form-floating:focus-within {
+        z-index: 2;
+      }
+
+      .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      .login-form {
+        /* width: 70%; */
+        padding: 2rem;
+        background-color: #20c997;
+        border-radius: 15px;
+      }
+      .form-footer {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+      }
+      .arrow-dir:hover,
+      .link-footer:hover,
+      .reset-link a {
+        color: white;
+        cursor: pointer;
+      }
+      .link-footer {
+        text-decoration: none;
+        color: #343a40;
+      }
+      .reset-link {
+        text-align: right;
+      }
+      .reset-link a {
+        color: red;
+        text-decoration: none;
+      }
+      body {
+        background: #ffecbb;
+      }
+      .colot {
+        background-color: #20c997;
+      }
+      .rounded-circle {
+        border: 1px solid #ffecbb;
+      }
+      .modal-content {
+        top: 7rem;
+      }
+      .card {
+        height: 13rem;
+      }
+      .card:hover{
+        border: 1px solid #E31C3A;
+      }
+      .card-body{
+        text-decoration: none;
+      }
+      .card-body:hover{
+        cursor: pointer;
+      }
+
+      .card-footer {
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .projectList {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="w-100 m-auto">
+      <header class="p-3 mb-3 border-bottom colot">
+        <div class="container">
+          <div
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+          >
+            <a
+              href="/"
+              class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+            >
+              <img
+                class=""
+                src="./img/logo.png"
+                alt=""
+                width="120"
+                height="40"
+              />
+            </a>
+
+            <ul
+              class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+            >
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+            </form>
+
+            <div class="dropdown text-end">
+              <a
+                href="#"
+                class="d-block link-dark text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://avatars.githubusercontent.com/u/60213381?s=200&v=4"
+                  alt="mdo"
+                  width="32"
+                  height="32"
+                  class="rounded-circle"
+                />
+              </a>
+              <ul class="dropdown-menu text-small" style="">
+                <li>
+                  <div class="open-modal dropdown-item" data-target="#myModal">
+                    Create project
+                  </div>
+                </li>
+                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- The Modal -->
+      <div class="modal" tabindex="-1" id="myModal">
+        <!-- <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+              <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+              <h3 class="fw-bold mb-0 fs-2">Create new project</h3>
+              <button
+                type="button"
+                class="btn-close open-modal"
+                data-target="#myModal"
+                id="close-modal-btn"
+              ></button>
+            </div>
+
+            <div class="modal-body p-5 pt-0">
+              <form class="">
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control rounded-3"
+                    id="floatingInput"
+                    placeholder="Project Name"
+                  />
+                  <label for="floatingInput">Project Name</label>
+                </div>
+                <button
+                  class="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+                  type="submit"
+                >
+                  Add project
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projectList">
+        <div class="card mb-3 shadow" style="max-width: 18rem">
+          <a href="via.html" class="card-body text-success">
+            <p class="card-text"></p>
+            <h5 class="card-title">Ecure</h5>
+          </a>
+          <div class="card-footer bg-transparent border-success">
+            <div></div>
+            <div class="dropdown text-end">
+              <a
+                href="#"
+                class="d-block link-dark text-decoration-none"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                  />
+                </svg>
+              </a>
+              <ul class="dropdown-menu text-small" style="">
+                <li>
+                  <div
+                    class="open-modal dropdown-item"
+                    data-target="#userModal"
+                  >
+                    Add User
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="settings.html">Project Details</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3 shadow" style="max-width: 18rem">
+          <a href="via.html" class="card-body text-success">
+            <p class="card-text"></p>
+            <h5 class="card-title">Mulago</h5>
+          </a>
+          <div class="card-footer bg-transparent border-success">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-people"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"
+                />
+              </svg>
+            </div>
+
+            <div class="dropdown text-end">
+              <a
+                href="#"
+                class="d-block link-dark text-decoration-none"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                  />
+                </svg>
+              </a>
+              <ul class="dropdown-menu text-small" style="">
+                <li>
+                  <div
+                    class="open-modal dropdown-item"
+                    data-target="#userModal"
+                  >
+                    Add User
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="settings.html">Project Details</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" tabindex="-1" id="userModal">
+        <!-- <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+              <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+              <h6 class="h6 mb-0">Invite user</h6>
+              <button
+                type="button"
+                class="btn-close open-modal"
+                data-target="#userModal"
+                id="xlose-modal-btn"
+              ></button>
+            </div>
+
+            <div class="modal-body p-5 pt-0">
+              <form class="">
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    class="form-control rounded-3"
+                    id="floatingInput"
+                    placeholder="name@example.com"
+                  />
+                  <label for="floatingInput">Add user email address</label>
+                </div>
+                <button
+                  class="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+                  type="submit"
+                >
+                  Invite user
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <p class="mb-3 text-muted">© Emergent.ai 2023</p> -->
+    </main>
+  </body>
+</html>

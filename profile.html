@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="STI -- Data Solutions Platform" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script>
+      // Open modal
+      document.getElementById("myModal").style.display = "block";
+
+      // Close modal
+      document.getElementById("myModal").style.display = "none";
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(".open-modal").on("click", function () {
+          const target = $(this).data("target");
+          $(".modal").modal("hide");
+          $(target).modal("show");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#close-modal-btn").on("click", function () {
+          $("#myModal").modal("hide");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#xlose-modal-btn").on("click", function () {
+          $("#userModal").modal("hide");
+        });
+      });
+    </script>
+
+    <style>
+      .TextButton {
+        display: block;
+        cursor: pointer;
+        user-select: none;
+        line-height: 0;
+        word-wrap: break-word;
+        padding: 20px 30px;
+        text-decoration: none;
+        color: black;
+        margin: initial;
+        border-radius: 2px;
+        transition: 0.3s ease-in-out;
+        background: transparent;
+        font-weight: 700;
+      }
+      .form-signin {
+        background-color: #ffecbb;
+        /* padding: 4rem 4rem 0 4rem;
+        min-height: 100vh; */
+      }
+      .form-signin {
+        max-width: 530px;
+        padding: 25px;
+      }
+
+      .form-signin .form-floating:focus-within {
+        z-index: 2;
+      }
+
+      .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      .login-form {
+        /* width: 70%; */
+        padding: 2rem;
+        background-color: #20c997;
+        border-radius: 15px;
+      }
+      .form-footer {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+      }
+      .arrow-dir:hover,
+      .link-footer:hover,
+      .reset-link a {
+        color: white;
+        cursor: pointer;
+      }
+      .link-footer {
+        text-decoration: none;
+        color: #343a40;
+      }
+      .reset-link {
+        text-align: right;
+      }
+      .reset-link a {
+        color: red;
+        text-decoration: none;
+      }
+      body {
+        background: #ffecbb;
+      }
+      .colot {
+        background-color: #20c997;
+      }
+      .rounded-circle {
+        border: 1px solid #ffecbb;
+      }
+      .modal-content {
+        top: 7rem;
+      }
+      .card {
+        height: 13rem;
+      }
+      .card:hover {
+        border: 1px solid #e31c3a;
+      }
+      .card-body {
+        text-decoration: none;
+      }
+      .card-body:hover {
+        cursor: pointer;
+      }
+
+      .card-footer {
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .projectList {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 2rem;
+      }
+      .textrit{
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="w-100 m-auto">
+      <header class="p-3 mb-3 border-bottom colot">
+        <div class="container">
+          <div
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+          >
+            <a
+              href="/"
+              class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+            >
+              <img
+                class=""
+                src="./img/logo.png"
+                alt=""
+                width="120"
+                height="40"
+              />
+            </a>
+
+            <ul
+              class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+            ></ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+            </form>
+
+            <div class="dropdown text-end">
+              <a
+                href="#"
+                class="d-block link-dark text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://avatars.githubusercontent.com/u/60213381?s=200&v=4"
+                  alt="mdo"
+                  width="32"
+                  height="32"
+                  class="rounded-circle"
+                />
+              </a>
+              <ul class="dropdown-menu text-small" style="">
+                <li>
+                  <div class="open-modal dropdown-item" data-target="#myModal">
+                    Create project
+                  </div>
+                </li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section>
+        <div class="container rounded bg-white mt-5 mb-5">
+          <div class="row">
+            <div class="col-md-3 border-right">
+              <div
+                class="d-flex flex-column align-items-center text-center p-3 py-5"
+              >
+                <img
+                  class="rounded-circle mt-5"
+                  width="150px"
+                  src="https://avatars.githubusercontent.com/u/60213381?s=200&v=4"
+                /><span class="font-weight-bold">Emergent</span
+                ><span class="text-black-50">user@mail.com</span><span> </span>
+              </div>
+            </div>
+            <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                >
+                  <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">FirstName</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="first name"
+                      value="Derrick"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Surname</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      value=""
+                      placeholder="surname"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Username</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="enter address line 1"
+                    value="username"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Email Address</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="enter email address"
+                    value="user@email.com"
+                  />
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label class="labels">Mobile Number</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="enter phone number"
+                      value="0751234567"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Organisation</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Organisation"
+                      value="AIR LAB"
+                    />
+                  </div>
+                </div>
+                <div class="mt-5 text-center">
+                  <button class="btn btn-primary profile-button" type="button">
+                    Save Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 py-5 textrit">
+                <a href="projects.html" type="button" class="btn btn-outline-danger ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    ></path>
+                  </svg>
+                  Projects
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <p class="mb-3 text-muted">© Emergent.ai 2023</p> -->
+    </main>
+  </body>
+</html>
