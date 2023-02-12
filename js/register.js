@@ -1,39 +1,46 @@
-document.getElementById('loginForm').addEventListener('submit', loginForm);
+document
+  .getElementById("registerForm")
+  .addEventListener("submit", registerForm);
 
-function loginForm(event){
+function registerForm(event) {
   event.preventDefault();
 
-  let email = document.getElementById('email').value
-  let password = document.getElementById('password').value;
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  let firstname = document.getElementById("firstname").value;
+  let lastname = document.getElementById("lastname").value;
+  let username = document.getElementById("username").value;
 
   const user = {
-    "email": email,
-    "password": password
-  }
+    email: email,
+    password: password,
+    username: username,
+    first_name: firstname,
+    last_name: lastname,
+  };
 
-  fetch('http://localhost:8000/accounts/login/', {
-    method: 'POST',
-    cache: 'no-cache',
+  fetch("http://localhost:8000/accounts/register/", {
+    method: "POST",
+    cache: "no-cache",
     headers: {
-      'content-type': 'application/json'
+      "content-type": "application/json",
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   })
-  .then(res => res.json())
-  .then((data) => {
-    console.log(data)
-    if (data.token !== null){
-      document.getElementById('status').style.display = 'none';
-      localStorage.setItem('token', data.token);
-      window.location.replace('projects.html');
-    } else {
-      document.getElementById('status').style.display = 'none';
-      alert(data.error)
-      document.getElementById('status').innerHTML = data.error;
-      setTimeout(() => {
-        document.getElementById('status').style.display = 'block';
-      }, 4000)
-    }
-  })
-  .catch((err) => console.log("nothing"))
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.message === "Successfully Registered") {
+        document.getElementById("status").style.display = "none";
+        window.location.replace("registerSuccess.html?email=" + email);
+      } else {
+        document.getElementById("status").style.display = "none";
+        alert(Object.entries(data)[0]);
+        document.getElementById("status").innerHTML = Object.entries(data)[0];
+        setTimeout(() => {
+          document.getElementById("status").style.display = "block";
+        }, 4000);
+      }
+    })
+    .catch((err) => console.log("Failed to Register"));
 }

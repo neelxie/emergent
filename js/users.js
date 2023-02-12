@@ -1,39 +1,37 @@
-document.getElementById('loginForm').addEventListener('submit', loginForm);
-
-function loginForm(event){
-  event.preventDefault();
-
-  let email = document.getElementById('email').value
-  let password = document.getElementById('password').value;
-
-  const user = {
-    "email": email,
-    "password": password
+async function getData() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.replace("./login.html");
   }
 
-  fetch('http://localhost:8000/accounts/login/', {
-    method: 'POST',
-    cache: 'no-cache',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  })
-  .then(res => res.json())
-  .then((data) => {
-    console.log(data)
-    if (data.token !== null){
-      document.getElementById('status').style.display = 'none';
-      localStorage.setItem('token', data.token);
-      window.location.replace('projects.html');
-    } else {
-      document.getElementById('status').style.display = 'none';
-      alert(data.error)
-      document.getElementById('status').innerHTML = data.error;
-      setTimeout(() => {
-        document.getElementById('status').style.display = 'block';
-      }, 4000)
+  try {
+    const response = await fetch("http://localhost:8000/accounts/users/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Error: API responded with non-200 status code");
     }
-  })
-  .catch((err) => console.log("nothing"))
+    const data = await response.json();
+    if (!data) {
+      return Promise.reject("Error: Data returned is null");
+    }
+    return data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
 }
+
+getData()
+  .then((data) => {
+    let output = "";
+    data.forEach((item) => {
+      output += `<li>${item.username}</li>`;
+    });
+    document.getElementById("appUsers").innerHTML = output;
+  })
+  .catch((error) => {
+    console.error(error);
+    document.getElementById("appUsers").innerHTML = `<li>${error}</li>`;
+  });

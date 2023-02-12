@@ -143,13 +143,13 @@
       .card {
         height: 13rem;
       }
-      .card:hover{
-        border: 1px solid #E31C3A;
+      .card:hover {
+        border: 1px solid #e31c3a;
       }
-      .card-body{
+      .card-body {
         text-decoration: none;
       }
-      .card-body:hover{
+      .card-body:hover {
         cursor: pointer;
       }
 
@@ -164,7 +164,18 @@
         grid-template-columns: repeat(4, 1fr);
         padding: 2rem;
       }
+
+      .username{
+        display: flex;
+        gap: 1rem;
+        text-transform: capitalize;
+        font-weight: 500;
+      }
     </style>
+    <script>
+      // Get the value from local storage
+      var storedValue = localStorage.getItem("username");
+    </script>
   </head>
   <body>
     <main class="w-100 m-auto">
@@ -188,8 +199,7 @@
 
             <ul
               class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-            >
-            </ul>
+            ></ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
               <input
@@ -200,7 +210,8 @@
               />
             </form>
 
-            <div class="dropdown text-end">
+            <div class="dropdown text-end username">
+              <div id="displayValue"></div>
               <a
                 href="#"
                 class="d-block link-dark text-decoration-none dropdown-toggle"
@@ -214,6 +225,7 @@
                   height="32"
                   class="rounded-circle"
                 />
+                
               </a>
               <ul class="dropdown-menu text-small" style="">
                 <li>
@@ -221,7 +233,9 @@
                     Create project
                   </div>
                 </li>
-                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                <li>
+                  <a class="dropdown-item" href="profile.html">Profile</a>
+                </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="#">Sign out</a></li>
               </ul>
@@ -308,7 +322,11 @@
                   </div>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="settings.html">Project Details</a></li>
+                <li>
+                  <a class="dropdown-item" href="settings.html"
+                    >Project Details</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -364,7 +382,11 @@
                   </div>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="settings.html">Project Details</a></li>
+                <li>
+                  <a class="dropdown-item" href="settings.html"
+                    >Project Details</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -411,5 +433,12 @@
       </div>
       <!-- <p class="mb-3 text-muted">© Emergent.ai 2023</p> -->
     </main>
+    <script>
+      // Select the HTML element where you want to display the value
+      var displayElement = document.getElementById("displayValue");
+
+      // Display the value in the selected HTML element
+      displayElement.innerHTML = storedValue;
+    </script>
   </body>
 </html>

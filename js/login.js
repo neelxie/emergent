@@ -22,9 +22,10 @@ function loginForm(event){
   .then(res => res.json())
   .then((data) => {
     console.log(data)
-    if (data.token !== null){
+    if (data.status === 'success' && data.token !== null){
       document.getElementById('status').style.display = 'none';
       localStorage.setItem('token', data.token);
+      localStorage.setItem('username', data.username)
       window.location.replace('projects.html');
     } else {
       document.getElementById('status').style.display = 'none';
