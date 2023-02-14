@@ -11,7 +11,7 @@ function loginForm(event){
     "password": password
   }
 
-  fetch('http://localhost:8000/accounts/login/', {
+  fetch('http://34.133.255.193:5000/accounts/login/', {
     method: 'POST',
     cache: 'no-cache',
     headers: {
@@ -26,7 +26,11 @@ function loginForm(event){
       document.getElementById('status').style.display = 'none';
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username)
-      window.location.replace('projects.html');
+      if(data.username === "admin"){
+        window.location.replace('admin.html');
+      } else {
+        window.location.replace('projects.html');
+      }
     } else {
       document.getElementById('status').style.display = 'none';
       alert(data.error)

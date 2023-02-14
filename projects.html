@@ -176,8 +176,9 @@
       // Get the value from local storage
       var storedValue = localStorage.getItem("username");
     </script>
+        <script src="./js/getProjects.js"></script>
   </head>
-  <body>
+  <body onload="inbox()">
     <main class="w-100 m-auto">
       <header class="p-3 mb-3 border-bottom colot">
         <div class="container">
@@ -262,7 +263,7 @@
             </div>
 
             <div class="modal-body p-5 pt-0">
-              <form class="">
+              <form id="createProject">
                 <div class="form-floating mb-3">
                   <input
                     type="text"

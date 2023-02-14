@@ -51,6 +51,12 @@
       ga('set', 'page', 'via-2.0.0.html');
       ga('send', 'pageview');
     </script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectName = urlParams.get('value');
+      const element = document.getElementById("project-name");
+      element.textContent = projectName;
+    </script>
 
 <!-- START: Contents of file: via.css-->
 <style>
@@ -556,7 +562,7 @@ ul.region_shape .selected { fill:#ffffff; stroke:#ff0000; }
           <div id="project_info_panel">
             <div class="row">
               <span class="col"><label for="project_name">Name: </label></span>
-              <span class="col"><input type="text" value="" onchange="project_on_name_update(this)" id="project_name" title="VIA project name"></span>
+              <span class="col"><input type="text" value="" id="project_name" title="VIA project name"></span>
             </div>
           </div>
           <div id="project_tools_panel">
@@ -8225,23 +8231,21 @@ function project_init_default_project() {
   project_set_name( project_get_default_project_name() );
 }
 
-function project_on_name_update(p) {
-  project_set_name(p.value);
-}
+// function project_on_name_update(p) {
+//   project_set_name(p.value);
+// }
 
 function project_get_default_project_name() {
-  const now = new Date();
-  var MONTH_SHORT_NAME = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var ts = now.getDate() + MONTH_SHORT_NAME[now.getMonth()] + now.getFullYear() +
-      '_' + now.getHours() + 'h' + now.getMinutes() + 'm';
+  const urlParams = new URLSearchParams(window.location.search);
+  const projectName = urlParams.get('value');
 
-  var project_name = 'via_project_' + ts;
+  var project_name = projectName;
   return project_name;
 }
 
 function project_save_with_confirm() {
   var config = {'title':'Save Project' };
-  var input = { 'project_name': { type:'text', name:'Project Name', value:_via_settings.project.name, disabled:false, size:30 },
+  var input = { 'project_name': { type:'text', name:'Project Name', value:projectName, disabled:true, size:30 },
                 'save_annotations':{ type:'checkbox', name:'Save region and file annotations (i.e. manual annotations)', checked:true, disabled:false},
                 'save_attributes':{ type:'checkbox', name:'Save region and file attributes.', checked:true},
                 'save_via_settings':{ type:'checkbox', name:'Save VIA application settings', checked:true},

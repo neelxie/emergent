@@ -11,7 +11,7 @@ function loginForm(event) {
     password: password,
   };
 
-  fetch("http://localhost:8000/accounts/login/", {
+  fetch("http://localhost:8000/accounts/logout/", {
     method: "POST",
     cache: "no-cache",
     headers: {

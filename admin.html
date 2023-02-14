@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="STI -- Data Solutions Platform" />
@@ -24,7 +23,40 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/login.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script>
+      // Open modal
+      document.getElementById("myModal").style.display = "block";
+
+      // Close modal
+      document.getElementById("myModal").style.display = "none";
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(".open-modal").on("click", function () {
+          const target = $(this).data("target");
+          $(".modal").modal("hide");
+          $(target).modal("show");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#close-modal-btn").on("click", function () {
+          $("#myModal").modal("hide");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#xlose-modal-btn").on("click", function () {
+          $("#userModal").modal("hide");
+        });
+      });
+    </script>
     <style>
       a {
         color: #000f !important;
@@ -104,7 +136,37 @@
         flex-wrap: nowrap;
         align-items: center;
       }
+      .modal-content {
+        top: 7rem;
+      }
+      .colot {
+        background-color: #20c997;
+      }
+      .rounded-circle {
+        border: 1px solid #ffecbb;
+      }
+      .modal-content {
+        top: 7rem;
+      }
+      .card {
+        height: 13rem;
+      }
+      .card:hover {
+        border: 1px solid #e31c3a;
+      }
+      .card-body {
+        text-decoration: none;
+      }
+      .card-body:hover {
+        cursor: pointer;
+      }
 
+      .card-footer {
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
       .LeftColumn .LogoWrapper {
         align-self: stretch;
         display: flex;
@@ -112,44 +174,11 @@
         justify-content: space-between;
       }
 
-      .EditorFeaturesWrapper {
-        animation-duration: 1.5s;
-        animation-name: cssAnimationShow;
-        animation-fill-mode: forwards;
-        flex: 1;
-        opacity: 1;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      .EditorFeaturesWrapper img {
-        filter: brightness(0) invert(1);
-        max-width: 60px;
-        max-height: 60px;
-        margin-bottom: 20px;
-        user-select: none;
-      }
-
-      .EditorFeaturesTiles {
-        flex: 1 0 26%;
-        min-width: 200px;
-        height: 200px;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .EditorFeaturesTilesWrapper {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        transition: transform 0.2s;
+      #projectList {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 1rem;
+        gap: 1rem;
       }
 
       .EditorFeaturesLabel {
@@ -273,11 +302,39 @@
         gap: 0.5rem;
         align-items: end;
       }
+      .username {
+        display: flex;
+        gap: 1rem;
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+      .content-section {
+        min-height: 85vh;
+      }
     </style>
+    <script>
+      // Get the value from local storage
+      var storedValue = localStorage.getItem("username");
+    </script>
+    <script src="./js/getProjects.js"></script>
+    <script src="./js/createProject.js"></script>
+    <script>
+      const link = document.querySelector(".card-body.text-success");
+      const title = document.querySelector("#title").textContent;
+
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = `via.html?title=${title}`;
+      });
+    </script>
   </head>
 
-  <body data-new-gr-c-s-check-loaded="14.1096.0" data-gr-ext-installed="">
-    <header class="p-3 mb-3 border-bottom colot">
+  <body
+    data-new-gr-c-s-check-loaded="14.1096.0"
+    data-gr-ext-installed=""
+    onload="inbox()"
+  >
+    <header class="p-3 border-bottom colot">
       <div class="container">
         <div
           class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
@@ -334,13 +391,52 @@
         </div>
       </div>
     </header>
+    <!-- The Modal -->
+    <div class="modal" tabindex="-1" id="myModal">
+      <!-- <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+            <h3 class="fw-bold mb-0 fs-2">Create new project</h3>
+            <button
+              type="button"
+              class="btn-close open-modal"
+              data-target="#myModal"
+              id="close-modal-btn"
+            ></button>
+          </div>
 
+          <div class="modal-body p-5 pt-0">
+            <form id="createProject">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control rounded-3"
+                  id="projectName"
+                  placeholder="Project Name"
+                />
+                <label for="floatingInput">Project Name</label>
+              </div>
+              <button
+                class="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+                type="submit"
+              >
+                Add project
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item mb-2">
+              <li class="nav-item mb-2 mt-2">
                 <a class="nav-link active" href="#">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -452,82 +548,38 @@
           </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div
-            class="chartjs-size-monitor"
-            style="
-              position: absolute;
-              inset: 0px;
-              overflow: hidden;
-              pointer-events: none;
-              visibility: hidden;
-              z-index: -1;
-            "
-          >
-            <div
-              class="chartjs-size-monitor-expand"
-              style="
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                overflow: hidden;
-                pointer-events: none;
-                visibility: hidden;
-                z-index: -1;
-              "
-            >
-              <div
-                style="
-                  position: absolute;
-                  width: 1000000px;
-                  height: 1000000px;
-                  left: 0;
-                  top: 0;
-                "
-              ></div>
-            </div>
-            <div
-              class="chartjs-size-monitor-shrink"
-              style="
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                overflow: hidden;
-                pointer-events: none;
-                visibility: hidden;
-                z-index: -1;
-              "
-            >
-              <div
-                style="
-                  position: absolute;
-                  width: 200%;
-                  height: 200%;
-                  left: 0;
-                  top: 0;
-                "
-              ></div>
-            </div>
-          </div>
+        <main
+          role="main"
+          class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 content-section"
+        >
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
           >
             <div class="btn-toolbar mb-2 mb-md-0">
-              <button class="btn btn-sm btn-primary">Create Project</button>
+              <button
+                class="btn btn-sm btn-primary open-modal"
+                data-target="#myModal"
+              >
+                Create Project
+              </button>
             </div>
           </div>
 
           <h2>Projects</h2>
           <div class="projectList">
-            
+            <div id="projectList"></div>
           </div>
         </main>
       </div>
     </div>
+    <script>
+      // Select the HTML element where you want to display the value
+      var displayElement = document.getElementById("displayValue");
+
+      // Display the value in the selected HTML element
+      displayElement.innerHTML = storedValue;
+    </script>
+    <script src="./js/createProject.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

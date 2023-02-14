@@ -19,7 +19,7 @@ function registerForm(event) {
     last_name: lastname,
   };
 
-  fetch("http://localhost:8000/accounts/register/", {
+  fetch("http://34.133.255.193:5000/accounts/register/", {
     method: "POST",
     cache: "no-cache",
     headers: {
