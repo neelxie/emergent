@@ -11,7 +11,7 @@ function loginForm(event){
     "password": password
   }
 
-  fetch('http://34.133.255.193:5000/accounts/login/', {
+  fetch('https://34.133.255.193:5000/accounts/login/', {
     method: 'POST',
     cache: 'no-cache',
     headers: {
